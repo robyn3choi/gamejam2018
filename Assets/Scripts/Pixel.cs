@@ -20,11 +20,16 @@ public class Pixel : MonoBehaviour {
     }
     
     void Update() {
-        if (isFading)
+        if (isFading && !GameManager.instance.isGameOver)
         {
             if (t < 1)
             {
                 t += Time.deltaTime / dur;
+            }
+            else
+            {
+                isFading = false;
+                GameManager.instance.GameOver();
             }
         }
 

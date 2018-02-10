@@ -24,12 +24,13 @@ public class PixelManager : MonoBehaviour {
             if (timer >= timeBetweenPixelFades) {
                 Pixel randomPixel = GetRandomPixel();
                 // TODO: replace with actual pixel's method
-                randomPixel.Fade();
+                randomPixel.isFading = true;
                 timer = timeBetweenPixelFades;
             }
             else {
                 timer += Time.deltaTime;
             }
+            yield return null;
         }
     }
 	

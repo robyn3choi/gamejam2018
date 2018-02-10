@@ -4,11 +4,27 @@ using UnityEngine;
 
 public class PixelManager : MonoBehaviour {
 
+    public static PixelManager instance = null;
+   
     List<Pixel> pixels = new List<Pixel>();
     public float timeBetweenPixelFades = 1; // will gradually decrease by GameManager
+    public float fadeSpeed = 3;
     float timer = 0;
 
-	// Use this for initialization
+    void Awake()
+    {
+        //Check if instance already exists
+        if (instance == null) {
+            //if not, set instance to this
+            instance = this;
+        }
+        //If instance already exists and it's not this:
+        else if (instance != this) {
+            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+            Destroy(gameObject);    
+        }
+    }
+        
 	void Start () {
         // get all the Pixel components in my children and add to my pixel list
         foreach (Transform t in transform) {
@@ -23,9 +39,10 @@ public class PixelManager : MonoBehaviour {
         while (true) {
             if (timer >= timeBetweenPixelFades) {
                 Pixel randomPixel = GetRandomPixel();
-                // TODO: replace with actual pixel's method
-                randomPixel.isFading = true;
-                timer = timeBetweenPixelFades;
+                if (!randomPixel.isFading) {
+                    randomPixel.isFading = true;
+                }
+                timer = 0;
             }
             else {
                 timer += Time.deltaTime;
@@ -33,11 +50,6 @@ public class PixelManager : MonoBehaviour {
             yield return null;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     Pixel GetRandomPixel() {
         int randomIndex = Random.Range(0, pixels.Count);

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,21 +10,21 @@ public class GameManager : MonoBehaviour
     public int phase = 1;
     public bool isGameOver = false;
     float phase1Timer = 15;
+    public GameObject GameOverStuff;
+    public Button StartOverBtn;
 
     void Awake()
     {
-        //Check if instance already exists
         if (instance == null)
         {
-            //if not, set instance to this
             instance = this;
         }
-        //If instance already exists and it's not this:
         else if (instance != this)
         {
-            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
         }
+        GameOverStuff.SetActive(false);
+        StartOverBtn.enabled = false;
     }
 
     void Start() {
@@ -42,6 +44,18 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         print("WEDIDITREDDIT");
+
+        GameOverStuff.SetActive(true);
+        StartOverBtn.enabled = true;
+        StartOverBtn.onClick.AddListener(StartOver);
+
+    }
+
+    public void StartOver()
+    {
+        print("Annyeonghaseyo");
+
+        SceneManager.LoadScene("Main");
     }
 
     void NextPhase()

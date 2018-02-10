@@ -7,13 +7,13 @@ public class Pixel : MonoBehaviour {
 
     private Color colorStart = Color.cyan;
     private Color colorEnd = Color.grey;
-    private float dur = 3.0F;       //fade time duration
-    private float t;
+    public float dur = 3.0F;       //fade time duration
+    private float t;                //lerp ctrl vbl
     public Button pixel1;
 
     // Use this for initialization
     void Start() {
-        t = 0.0F;      //lerp ctrl vbl
+        t = 0.0F;
         Button btn = pixel1.GetComponent<Button>();
         btn.onClick.AddListener(UnFade);
     }

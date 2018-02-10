@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    private int phase = 1;
+    public int phase = 1;
     public bool isGameOver = false;
+    float phase1Timer = 15;
 
     void Awake()
     {
@@ -24,6 +25,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Start() {
+        StartCoroutine(Phase1Timer());
+    }
+
+    IEnumerator Phase1Timer() {
+        while (phase1Timer >= 0) {
+            phase1Timer -= Time.deltaTime;
+            yield return null;
+        }
+        NextPhase();
+        yield break;
+    }
+
     public void GameOver()
     {
         isGameOver = true;
@@ -33,6 +47,7 @@ public class GameManager : MonoBehaviour
     void NextPhase()
     {
         phase++;
+        print("ON PHASE: " + phase);
     }
 
     void EndGame()

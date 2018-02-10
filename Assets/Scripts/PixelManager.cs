@@ -8,7 +8,9 @@ public class PixelManager : MonoBehaviour {
    
     List<Pixel> pixels = new List<Pixel>();
     public float timeBetweenPixelFades = 1; // will gradually decrease by GameManager
-    public float fadeSpeed = 3;
+    public float fadeDur = 3;
+    float fadeSpeedupRate = 0.05f;
+    float fadeSpeedupAccelRate = 0.05f;
     float timer = 0;
 
     void Awake()
@@ -31,24 +33,35 @@ public class PixelManager : MonoBehaviour {
             Pixel pixel = t.GetComponent<Pixel>();
             pixels.Add(pixel);
         }
-
-        StartCoroutine(FadeRandomPixels());
 	}
 
-    IEnumerator FadeRandomPixels() {
-        while (true) {
-            if (timer >= timeBetweenPixelFades) {
-                Pixel randomPixel = GetRandomPixel();
-                if (!randomPixel.isFading) {
-                    randomPixel.isFading = true;
-                }
-                timer = 0;
-            }
-            else {
-                timer += Time.deltaTime;
-            }
-            yield return null;
+    void Update() {
+        if (GameManager.instance.phase < 3) {
+            FadeRandomPixels();
+            SpeedUpFading();
         }
+
+        if (GameManager.instance.phase == 2) {
+            fadeSpeedupRate += fadeSpeedupAccelRate * Time.deltaTime;
+        }
+    }
+
+    void FadeRandomPixels() {
+        if (timer >= timeBetweenPixelFades) {
+            Pixel randomPixel = GetRandomPixel();
+            if (!randomPixel.isFading) {
+                randomPixel.isFading = true;
+            }
+            timer = 0;
+        }
+        else {
+            timer += Time.deltaTime;
+        }
+    }
+
+    void SpeedUpFading() {
+        //fadeDur -= fadeSpeedupRate * Time.deltaTime;
+        timeBetweenPixelFades -= fadeSpeedupRate * Time.deltaTime;
     }
 
     Pixel GetRandomPixel() {

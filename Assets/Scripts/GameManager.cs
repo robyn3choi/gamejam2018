@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     float phase1Timer = 15;
     public GameObject GameOverStuff;
     public Button StartOverBtn;
+    public AudioSource Shepard;
+    float shepTime = 0.0f;
 
     void Awake()
     {
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
         }
         GameOverStuff.SetActive(false);
         StartOverBtn.enabled = false;
+        Shepard = GetComponent< AudioSource > ();
     }
 
     void Start() {
@@ -48,13 +51,11 @@ public class GameManager : MonoBehaviour
         GameOverStuff.SetActive(true);
         StartOverBtn.enabled = true;
         StartOverBtn.onClick.AddListener(StartOver);
-
     }
 
     public void StartOver()
     {
         print("Annyeonghaseyo");
-
         SceneManager.LoadScene("Main");
     }
 
@@ -64,13 +65,32 @@ public class GameManager : MonoBehaviour
         print("ON PHASE: " + phase);
     }
 
-    void EndGame()
+    public void PlayShepard()
     {
-        
+        Shepard.volume = 0;
+        Shepard.Play();
+        phase2Audio();
     }
 
-    void Update()
+    void phase2Audio()
     {
+        StartCoroutine(phase2timer());
+    }
 
+    IEnumerator phase2timer()
+    {
+        while (Shepard.volume < 0.95)
+        {
+            Shepard.volume = 1/(1+(Mathf.Exp(-(shepTime - 5)/3)));
+            shepTime += Time.deltaTime;
+            yield return null;
+        }
+        NextPhase();
+        yield break;
+    }
+
+        void EndGame()
+    {
+        
     }
 }

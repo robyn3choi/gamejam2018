@@ -11,6 +11,7 @@ public class Pixel : MonoBehaviour {
     private float t;                //lerp ctrl vbl
     public Button btn;
     public bool isFading;
+    public bool hasFaded = false;
 
     void Start() {
         t = 0.0F;
@@ -28,9 +29,11 @@ public class Pixel : MonoBehaviour {
             }
             else
             {
-                print(gameObject);
                 isFading = false;
-                GameManager.instance.GameOver();
+                hasFaded = true;
+                if (GameManager.instance.phase == 1) {
+                    GameManager.instance.GameOver();
+                }
             }
         }
         ColorBlock cb =   btn.colors;
@@ -42,7 +45,9 @@ public class Pixel : MonoBehaviour {
 
     void UnFade()
     {
-        t = 0.0f;
-        isFading = false;
+        if (!hasFaded) {
+            t = 0.0f;
+            isFading = false;   
+        }
     }
 }

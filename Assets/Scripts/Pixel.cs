@@ -44,9 +44,9 @@ public class Pixel : MonoBehaviour {
                         GameManager.instance.GameOver();
                     }
                 }
-                else if (GameManager.instance.phase == 5)
+                else if (GameManager.instance.phase == 5 && PixelManager.instance.isInterfade)
                 {
-                    isInterfade = true;
+                    InterFade();
                 }
                 
                 
@@ -65,6 +65,11 @@ public class Pixel : MonoBehaviour {
             audio.clip = PixelManager.instance.GetRandomNote();
             audio.Play();
         }
+        if (GameManager.instance.phase ==5)
+        {
+            PixelManager.instance.isInterfade = true;
+
+        }
     }
 
     public void UnFadeByHelper() {
@@ -75,13 +80,7 @@ public class Pixel : MonoBehaviour {
         audio.clip = PixelManager.instance.GetRandomNote();
         audio.Play();
     }
-
-    private void OnMouseDown()
-    {
-        if (isInterfade == true) {
-            InterFade();
-        }
-    }
+   
 
     public void InterFade()
     {
@@ -89,6 +88,7 @@ public class Pixel : MonoBehaviour {
         isFading = true;
         colorStart = Colors.GetRandomColor();
         colorEnd = Colors.GetRandomColor();
-        
     }
+
+   
 }

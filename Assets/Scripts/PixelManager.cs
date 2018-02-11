@@ -15,6 +15,10 @@ public class PixelManager : MonoBehaviour {
     float timer = 0;
     public bool canPlayerClick = true;
     public AudioClip[] notes;
+    public bool isInterfade = false;
+    private AudioSource a;
+    private AudioSource b;
+    private AudioSource c;
 
     void Awake()
     {

@@ -43,7 +43,7 @@ public class Pixel : MonoBehaviour {
         GetComponent<Button>().colors = cb;
     }
 
-    void UnFade()
+    public void UnFade()
     {
         if (!hasFaded) {
             t = 0.0f;

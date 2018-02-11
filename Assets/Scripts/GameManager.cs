@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public int phase = 1;
     public bool isGameOver = false;
-    float phase1Timer = 15;
+    float phase1Timer = 10;
     public GameObject GameOverStuff;
     public Button StartOverBtn;
+    public Texture2D cursorTexture;
 
     void Awake()
     {
@@ -23,8 +24,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       // GameOverStuff.SetActive(false);
-       // StartOverBtn.enabled = false;
+
+        Cursor.SetCursor(cursorTexture, Vector2.zero,CursorMode.Auto);
     }
 
     void Start() {

@@ -4201,8 +4201,8 @@ MonoBehaviour:
   GameOverStuff: {fileID: 314889929}
   StartOverBtn: {fileID: 877382209}
   cursorTexture: {fileID: 2800000, guid: 6672cc10cc26b4172815e986dbcf7ff2, type: 3}
-  Shepard: {fileID: 0}
-  Ringer: []
+  audio: {fileID: 0}
+  ringerClip: {fileID: 8300000, guid: e43617120f0c9c64db6d53d611bcc034, type: 3}
 --- !u!82 &1062971952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4212,7 +4212,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 78e44b77b50be2543abab61cdd302b57, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6315acc6b1964764497a35841a7a4e39, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

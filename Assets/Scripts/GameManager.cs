@@ -102,23 +102,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine (FadeOut (audio2, 1f));
     }
 
-//    public void PlayShepard()
-//    {
-//        audio.volume = 0;
-//        audio.Play();
-//        StartCoroutine(phase2timerA());
-//    }
-    
-//    IEnumerator phase2timerA()
-//    {
-//        while (audio.volume < 0.99)
-//        {
-//            audio.volume = 1/(1+(Mathf.Exp(-2*(shepTime - 1.5f))));
-//            shepTime += Time.deltaTime;
-//            yield return null;
-//        }
-//        yield break;
-//    }
     public void PlayImpact() {
         audio1.clip = impactClip;
         audio1.Play();

@@ -53,6 +53,7 @@ public class PixelManager : MonoBehaviour {
                 GameManager.instance.PlayImpact();
             }
         }
+
     }
 
     bool HaveAllPixelsFaded() {

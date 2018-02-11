@@ -14,6 +14,7 @@ public class Pixel : MonoBehaviour {
     public bool hasFaded = false;
     Image image;
     AudioSource audio;
+    public bool isInterfade = false;
 
     void Start() {
         t = 0.0F;
@@ -34,11 +35,21 @@ public class Pixel : MonoBehaviour {
             }
             else
             {
-                isFading = false;
-                hasFaded = true;
-                if (GameManager.instance.phase == 1) {
-                    GameManager.instance.GameOver();
+                if (GameManager.instance.phase < 5)
+                {
+                    isFading = false;
+                    hasFaded = true;
+                    if (GameManager.instance.phase == 1)
+                    {
+                        GameManager.instance.GameOver();
+                    }
                 }
+                else if (GameManager.instance.phase == 5)
+                {
+                    isInterfade = true;
+                }
+                
+                
             }
         }
         image.color = Color.Lerp(colorStart, colorEnd, t);
@@ -63,5 +74,21 @@ public class Pixel : MonoBehaviour {
         colorStart = image.color;
         audio.clip = PixelManager.instance.GetRandomNote();
         audio.Play();
+    }
+
+    private void OnMouseDown()
+    {
+        if (isInterfade == true) {
+            InterFade();
+        }
+    }
+
+    public void InterFade()
+    {
+        t = 0.0f;
+        isFading = true;
+        colorStart = Colors.GetRandomColor();
+        colorEnd = Colors.GetRandomColor();
+        
     }
 }

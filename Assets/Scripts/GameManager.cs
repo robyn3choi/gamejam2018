@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         audio1 = GetComponents< AudioSource > ()[0];
         audio2 = GetComponents< AudioSource > ()[1];
         audio3 = GetComponents< AudioSource > ()[2];
-
+        Screen.SetResolution(1024, 576, false);
     }
 
     void Start()

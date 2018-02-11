@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        GameOverStuff.SetActive(false);
-        StartOverBtn.enabled = false;
+       // GameOverStuff.SetActive(false);
+       // StartOverBtn.enabled = false;
     }
 
     void Start() {
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         print("WEDIDITREDDIT");
 
         GameOverStuff.SetActive(true);
-        StartOverBtn.enabled = true;
+       // StartOverBtn.enabled = true;
         StartOverBtn.onClick.AddListener(StartOver);
 
     }
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    void NextPhase()
+    public void NextPhase()
     {
         phase++;
         print("ON PHASE: " + phase);

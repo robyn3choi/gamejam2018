@@ -9,6 +9,7 @@ public class PixelManager : MonoBehaviour {
     List<Pixel> pixels = new List<Pixel>();
     public float timeBetweenPixelFades = 1; // will gradually decrease by GameManager
     public float fadeDur = 3;
+    float fadeDurSpeedupRate = 0.05f;
     float fadeSpeedupRate = 0.05f;
     float fadeSpeedupAccelRate = 0.05f;
     float timer = 0;
@@ -43,7 +44,20 @@ public class PixelManager : MonoBehaviour {
 
         if (GameManager.instance.phase == 2) {
             fadeSpeedupRate += fadeSpeedupAccelRate * Time.deltaTime;
+            fadeDur -= fadeDurSpeedupRate * Time.deltaTime;
+            if (HaveAllPixelsFaded()) {
+                GameManager.instance.NextPhase();
+            }
         }
+    }
+
+    bool HaveAllPixelsFaded() {
+        foreach (Pixel p in pixels) {
+            if (!p.hasFaded) {
+                return false;
+            }
+        }
+        return true;
     }
 
     void FadeRandomPixels() {

@@ -15,6 +15,7 @@ public class Pixel : MonoBehaviour {
     Image image;
     AudioSource audio;
     public bool isInterfade = false;
+    public Grid thegrid;
 
     void Start() {
         t = 0.0F;
@@ -51,6 +52,8 @@ public class Pixel : MonoBehaviour {
                 
                 
             }
+
+            
         }
         image.color = Color.Lerp(colorStart, colorEnd, t);
     }
@@ -68,7 +71,8 @@ public class Pixel : MonoBehaviour {
         if (GameManager.instance.phase ==5)
         {
             PixelManager.instance.isInterfade = true;
-
+            audio.clip = PixelManager.instance.GetRandomNote();
+            audio.Play();
         }
     }
 

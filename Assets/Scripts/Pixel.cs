@@ -13,6 +13,7 @@ public class Pixel : MonoBehaviour {
     public bool isFading;
     public bool hasFaded = false;
     Image image;
+    AudioSource audio;
 
     void Start() {
         t = 0.0F;
@@ -21,6 +22,7 @@ public class Pixel : MonoBehaviour {
         image = GetComponent<Image>();
         image.color = Colors.GetRandomColor();
         colorStart = image.color;
+        audio = GetComponent<AudioSource>();
     }
     
     void Update() {
@@ -44,11 +46,13 @@ public class Pixel : MonoBehaviour {
 
     public void UnFade()
     {
-        if (!hasFaded) {
+        if (isFading && !hasFaded && GameManager.instance.canPlayerClick) {
             t = 0.0f;
             isFading = false; 
             image.color = Colors.GetRandomColor();
             colorStart = image.color;
+            audio.clip = PixelManager.instance.GetRandomNote();
+            audio.Play();
         }
     }
 
@@ -57,5 +61,7 @@ public class Pixel : MonoBehaviour {
         isFading = true;  
         image.color = Colors.GetRandomColor();
         colorStart = image.color;
+        audio.clip = PixelManager.instance.GetRandomNote();
+        audio.Play();
     }
 }

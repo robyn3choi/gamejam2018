@@ -13,6 +13,8 @@ public class PixelManager : MonoBehaviour {
     float fadeSpeedupRate = 0.05f;
     float fadeSpeedupAccelRate = 0.05f;
     float timer = 0;
+    public bool canPlayerClick = true;
+    public AudioClip[] notes;
 
     void Awake()
     {
@@ -48,6 +50,7 @@ public class PixelManager : MonoBehaviour {
             if (HaveAllPixelsFaded()) {
                 GameManager.instance.NextPhase();
                 GameManager.instance.PlayRinger();
+                GameManager.instance.PlayImpact();
             }
         }
     }
@@ -82,5 +85,9 @@ public class PixelManager : MonoBehaviour {
     Pixel GetRandomPixel() {
         int randomIndex = Random.Range(0, pixels.Count);
         return pixels[randomIndex];
+    }
+
+    public AudioClip GetRandomNote() {
+        return notes[Random.Range(0, notes.Length)];
     }
 }

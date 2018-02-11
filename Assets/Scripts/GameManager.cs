@@ -9,9 +9,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public int phase = 1;
     public bool isGameOver = false;
-    float phase1Timer = 1;
+    float phase1Timer = 10;
     public GameObject GameOverStuff;
     public Button StartOverBtn;
+    public Texture2D cursorTexture;
     public AudioSource Shepard;
     float shepTime = 0.0f;
     public AudioClip[] Ringer;
@@ -26,8 +27,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        GameOverStuff.SetActive(false);
-        StartOverBtn.enabled = false;
+
+        Cursor.SetCursor(cursorTexture, Vector2.zero,CursorMode.Auto);
         Shepard = GetComponent< AudioSource > ();
     }
 
@@ -65,6 +66,14 @@ public class GameManager : MonoBehaviour
     {
         phase++;
         print("ON PHASE: " + phase);
+        if (phase == 3) {
+            Invoke("MoveToPhase4", 3);
+        }
+    }
+
+    void MoveToPhase4() {
+        NextPhase();
+        HelperManager.instance.Phase4();
     }
 
     public void PlayShepard()

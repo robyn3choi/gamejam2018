@@ -41,6 +41,11 @@ public class HelperManager : MonoBehaviour {
             helpers[i].SetActive(true);
             yield return new WaitForSeconds(timeInBetweenHelpers);
         }
+
+        yield return new WaitForSeconds(3);
+        GameManager.instance.NextPhase();
+        
         yield break;
     }
+    
 }

@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Helper : MonoBehaviour, IPointerEnterHandler {
 
     float clickSpeed = 1.8f;
-    float moveSpeed = 200;
     public Pixel myPixel;
  
 
@@ -19,9 +18,13 @@ public class Helper : MonoBehaviour, IPointerEnterHandler {
             transform.DOMove(destination, 2).OnComplete(StartClicking);
         }
         else {
-            StartClicking();
+            StartClickingPhase6();
         }
 	}
+
+    void StartClickingPhase6() {
+        InvokeRepeating("Click", 1.5f, clickSpeed);
+    }
         
     public void StartClicking() {
         InvokeRepeating("Click", 0.1f, clickSpeed);

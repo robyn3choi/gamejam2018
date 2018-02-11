@@ -48,6 +48,7 @@ public class Pixel : MonoBehaviour {
             t = 0.0f;
             isFading = false; 
             image.color = Colors.GetRandomColor();
+            colorStart = image.color;
         }
     }
 
@@ -55,5 +56,6 @@ public class Pixel : MonoBehaviour {
         t = 0.0f;
         isFading = true;  
         image.color = Colors.GetRandomColor();
+        colorStart = image.color;
     }
 }

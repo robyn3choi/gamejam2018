@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         phase++;
         print("ON PHASE: " + phase);
         if (phase == 3) {
-            Invoke("MoveToPhase4", 3);
+            Invoke("MoveToPhase4", 5);
         }
     }
 

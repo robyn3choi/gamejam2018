@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Helper : MonoBehaviour {
 
-    float clickSpeed = 1;
+    float clickSpeed = 1.5f;
     float moveSpeed = 200;
     public Pixel myPixel;
 

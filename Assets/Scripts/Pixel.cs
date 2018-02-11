@@ -12,12 +12,15 @@ public class Pixel : MonoBehaviour {
     public Button btn;
     public bool isFading;
     public bool hasFaded = false;
+    Image image;
 
     void Start() {
         t = 0.0F;
         btn = GetComponent<Button>();
         btn.onClick.AddListener(UnFade);
-        colorStart = btn.colors.normalColor;
+        image = GetComponent<Image>();
+        image.color = Colors.GetRandomColor();
+        colorStart = image.color;
     }
     
     void Update() {
@@ -36,23 +39,21 @@ public class Pixel : MonoBehaviour {
                 }
             }
         }
-        ColorBlock cb =   btn.colors;
-        cb.normalColor = Color.Lerp(colorStart, colorEnd, t);
-        cb.highlightedColor = Color.Lerp(colorStart, colorEnd, t);
-        cb.pressedColor = Color.Lerp(colorStart, colorEnd, t);
-        GetComponent<Button>().colors = cb;
+        image.color = Color.Lerp(colorStart, colorEnd, t);
     }
 
     public void UnFade()
     {
         if (!hasFaded) {
             t = 0.0f;
-            isFading = false;   
+            isFading = false; 
+            image.color = Colors.GetRandomColor();
         }
     }
 
     public void UnFadeByHelper() {
         t = 0.0f;
-        isFading = false;  
+        isFading = true;  
+        image.color = Colors.GetRandomColor();
     }
 }

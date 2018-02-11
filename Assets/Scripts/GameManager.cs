@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator Phase1Timer() {
-        while (phase1Timer >= 0) {
+        while (phase1Timer >= 0 && !isGameOver) {
             phase1Timer -= Time.deltaTime;
             yield return null;
         }

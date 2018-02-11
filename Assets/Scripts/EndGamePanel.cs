@@ -13,7 +13,7 @@ public class EndGamePanel : MonoBehaviour, IPointerClickHandler {
     void Start() {
         c = GetComponents<AudioSource>()[0];
         e = GetComponents<AudioSource>()[1];
-        Invoke("canEnd", 2);
+        Invoke("canEndNow", 2);
     }
 
     void canEndNow() {

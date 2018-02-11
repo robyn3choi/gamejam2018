@@ -52,8 +52,6 @@ public class Helper : MonoBehaviour, IPointerEnterHandler {
     {
         if (GameManager.instance.phase == 5)
         {
-            //If your mouse hovers over the GameObject with the script attached, output this message
-            Debug.Log("Mouse is over GameObject.");
             gameObject.SetActive(false);
         }
     }

@@ -16,9 +16,6 @@ public class PixelManager : MonoBehaviour {
     public bool canPlayerClick = true;
     public AudioClip[] notes;
     public bool isInterfade = false;
-    private AudioSource a;
-    private AudioSource b;
-    private AudioSource c;
 
     void Awake()
     {
@@ -33,7 +30,7 @@ public class PixelManager : MonoBehaviour {
             Destroy(gameObject);    
         }
     }
-        
+
 	void Start () {
         // get all the Pixel components in my children and add to my pixel list
         foreach (Transform t in transform) {

@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         print("WEDIDITREDDIT");
         audio1.Stop();
         audio2.Stop();
+        StopAllCoroutines();
         GameOverStuff.SetActive(true);
         StartOverBtn.enabled = true;
         StartOverBtn.onClick.AddListener(StartOver);

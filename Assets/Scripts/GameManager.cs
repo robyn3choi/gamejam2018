@@ -9,11 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public int phase = 1;
     public bool isGameOver = false;
-    float phase1Timer = 15;
+    float phase1Timer = 1;
     public GameObject GameOverStuff;
     public Button StartOverBtn;
     public AudioSource Shepard;
     float shepTime = 0.0f;
+    public AudioClip[] Ringer;
 
     void Awake()
     {
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         NextPhase();
+        PlayShepard();
         yield break;
     }
 
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
         print("WEDIDITREDDIT");
 
         GameOverStuff.SetActive(true);
-       // StartOverBtn.enabled = true;
+        StartOverBtn.enabled = true;
         StartOverBtn.onClick.AddListener(StartOver);
     }
 
@@ -69,23 +71,18 @@ public class GameManager : MonoBehaviour
     {
         Shepard.volume = 0;
         Shepard.Play();
-        phase2Audio();
-    }
-
-    void phase2Audio()
-    {
         StartCoroutine(phase2timer());
     }
-
+    
     IEnumerator phase2timer()
     {
-        while (Shepard.volume < 0.95)
+        while (Shepard.volume < 0.99)
         {
-            Shepard.volume = 1/(1+(Mathf.Exp(-(shepTime - 5)/3)));
+            Shepard.volume = 1/(1+(Mathf.Exp(-(shepTime - 3))));
             shepTime += Time.deltaTime;
             yield return null;
         }
-        NextPhase();
+        Shepard.volume = 0;
         yield break;
     }
 

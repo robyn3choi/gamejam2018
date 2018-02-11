@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         }
 
         Cursor.SetCursor(cursorTexture, Vector2.zero,CursorMode.Auto);
-        GameOverStuff.SetActive(false);
-        StartOverBtn.enabled = false;
+       // GameOverStuff.SetActive(false);
+       // StartOverBtn.enabled = false;
         Shepard = GetComponent< AudioSource > ();
     }
 
@@ -66,6 +66,14 @@ public class GameManager : MonoBehaviour
     {
         phase++;
         print("ON PHASE: " + phase);
+        if (phase == 3) {
+            Invoke("MoveToPhase4", 3);
+        }
+    }
+
+    void MoveToPhase4() {
+        NextPhase();
+        HelperManager.instance.Phase4();
     }
 
     public void PlayShepard()

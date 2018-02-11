@@ -50,4 +50,9 @@ public class Pixel : MonoBehaviour {
             isFading = false;   
         }
     }
+
+    public void UnFadeByHelper() {
+        t = 0.0f;
+        isFading = false;  
+    }
 }

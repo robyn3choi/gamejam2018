@@ -6,7 +6,6 @@ public class HelperManager : MonoBehaviour {
 
     public static HelperManager instance = null;
     List<GameObject> helpers = new List<GameObject>();
-    float timer = 0;
     float timeInBetweenHelpers = 0.2f;
 
     void Awake()

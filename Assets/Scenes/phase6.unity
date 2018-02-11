@@ -312,6 +312,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &123932108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,6 +1230,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &317593042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,6 +1572,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &451455839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1941,6 +1947,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &510484903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2114,6 +2122,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &578590202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2829,6 +2839,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &656747745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3579,6 +3591,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &744982999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3752,6 +3766,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &749805414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4353,6 +4369,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &907053684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4526,6 +4544,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &914381561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4871,6 +4891,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &997843622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5289,6 +5311,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1039063351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5974,6 +5998,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1138793311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6180,6 +6206,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1149182728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6424,6 +6452,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d9b4a5ee068d843b882697ebd598e47c, type: 3}
   - {fileID: 8300000, guid: ffac925ce4afb44898d7f1cf7b721894, type: 3}
   - {fileID: 8300000, guid: 88549392736cc42f8ba194566923719a, type: 3}
+  isInterfade: 0
 --- !u!224 &1290325387 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224695451208375832, guid: b63990d12107f41ea96f6837724b3fc6,
@@ -6695,6 +6724,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1485759541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7035,6 +7066,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1499187313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7375,6 +7408,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1564817426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7586,6 +7621,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1626619023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7817,7 +7854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lividus
+  m_Text: Vividus
 --- !u!222 &1676606877
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8154,6 +8191,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1832418908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8360,6 +8399,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1837428690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8834,6 +8875,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1888854783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9083,6 +9126,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1947231554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9256,6 +9301,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &1971818055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9616,6 +9663,8 @@ MonoBehaviour:
   btn: {fileID: 0}
   isFading: 0
   hasFaded: 0
+  isInterfade: 0
+  thegrid: {fileID: 0}
 --- !u!114 &2063291299
 MonoBehaviour:
   m_ObjectHideFlags: 0

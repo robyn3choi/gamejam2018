@@ -47,6 +47,7 @@ public class PixelManager : MonoBehaviour {
             fadeDur -= fadeDurSpeedupRate * Time.deltaTime;
             if (HaveAllPixelsFaded()) {
                 GameManager.instance.NextPhase();
+                GameManager.instance.PlayRinger();
             }
         }
     }

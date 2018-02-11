@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverStuff;
     public Button StartOverBtn;
     public Texture2D cursorTexture;
-    public AudioSource Shepard;
+    public AudioSource audio;
     float shepTime = 0.0f;
-    public AudioClip[] Ringer;
+    float ringTime = 0.0f;
+    public AudioClip ringerClip;
 
     void Awake()
     {
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
         }
 
         Cursor.SetCursor(cursorTexture, Vector2.zero,CursorMode.Auto);
-        Shepard = GetComponent< AudioSource > ();
+        audio = GetComponent< AudioSource > ();
     }
 
     void Start() {
@@ -74,28 +75,48 @@ public class GameManager : MonoBehaviour
     void MoveToPhase4() {
         NextPhase();
         HelperManager.instance.Phase4();
+        audio.Stop();
     }
 
     public void PlayShepard()
     {
-        Shepard.volume = 0;
-        Shepard.Play();
-        StartCoroutine(phase2timer());
+        audio.volume = 0;
+        audio.Play();
+        StartCoroutine(phase2timerA());
     }
     
-    IEnumerator phase2timer()
+    IEnumerator phase2timerA()
     {
-        while (Shepard.volume < 0.99)
+        while (audio.volume < 0.99)
         {
-            Shepard.volume = 1/(1+(Mathf.Exp(-(shepTime - 3))));
+            audio.volume = 1/(1+(Mathf.Exp(-2*(shepTime - 1.5f))));
             shepTime += Time.deltaTime;
             yield return null;
         }
-        Shepard.volume = 0;
         yield break;
     }
 
-        void EndGame()
+    public void PlayRinger()
+    {
+        audio.Stop();
+        audio.clip = ringerClip;
+        audio.Play();
+        StartCoroutine(phase2timerB());
+    }
+
+    IEnumerator phase2timerB()
+    {
+        while (audio.volume > 0)
+        {
+            audio.volume = (Mathf.Exp(-ringTime/3))-0.02f ;
+            ringTime += Time.deltaTime;
+            yield return null;
+        }
+        yield break;
+    }
+
+
+    void EndGame()
     {
         
     }

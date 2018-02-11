@@ -6,14 +6,17 @@ using UnityEngine.EventSystems;
 public class EndGamePanel : MonoBehaviour, IPointerClickHandler {
 
     public GameObject credits;
-    AudioSource audio;
+    AudioSource c;
+    AudioSource e;
 
     void Start() {
-        audio = GetComponent<AudioSource>();
+        c = GetComponents<AudioSource>()[0];
+        e = GetComponents<AudioSource>()[1];
     }
     public void OnPointerClick(PointerEventData pointerEventData)
     {
-        audio.Play();
+        c.Play();
+        e.Play();
         credits.SetActive(true);
         GameManager.instance.EndGame();
     }

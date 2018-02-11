@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorTexture;
     AudioSource audio1; //riser and impact
     AudioSource audio2; // ringer
+    AudioSource audio3; // happy chord
     float shepTime = 0.0f;
     float ringTime = 0.0f;
     public AudioClip ringerClip;
@@ -33,22 +34,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+
 
         Cursor.SetCursor(cursorTexture, Vector2.zero,CursorMode.Auto);
         audio1 = GetComponents< AudioSource > ()[0];
         audio2 = GetComponents< AudioSource > ()[1];
+        audio3 = GetComponents< AudioSource > ()[2];
 
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            phase = 6;
-            SceneManager.LoadScene("phase6");
-        }
-    }
-
-    void Start() {
+    void Start()
+    {
         StartCoroutine(Phase1Timer());
     }
 
@@ -66,7 +62,8 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         print("WEDIDITREDDIT");
-
+        audio1.Stop();
+        audio2.Stop();
         GameOverStuff.SetActive(true);
         StartOverBtn.enabled = true;
         StartOverBtn.onClick.AddListener(StartOver);
@@ -90,6 +87,10 @@ public class GameManager : MonoBehaviour
             audio1.Play();
             Invoke("MakePlayerNotClick", 10);
         }
+        if (phase == 6) {
+            DontDestroyOnLoad(this);
+            SceneManager.LoadScene("phase6");
+        }
     }
 
     void MakePlayerNotClick() {
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
     void MoveToPhase4() {
         NextPhase();
         HelperManager.instance.Phase4();
-        StartCoroutine (FadeOut (audio2, 1f));
+        //StartCoroutine (FadeOut (audio2, 0.3f));
     }
 
 //    public void PlayShepard()
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
 //        yield break;
 //    }
     public void PlayImpact() {
+        audio1.Stop();
         audio1.clip = impactClip;
         audio1.Play();
     }
@@ -159,5 +161,10 @@ public class GameManager : MonoBehaviour
     {
         isGameEnd = true;
         print("Thanks for playing!");
+    }
+
+    public void PlayChord() {
+        audio3.Play();
+        Invoke("NextPhase", 18);
     }
 }

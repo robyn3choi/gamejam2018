@@ -37,6 +37,8 @@ public class HelperManager : MonoBehaviour {
 
         yield return new WaitForSeconds(3);
 
+        Invoke("PlayChord", 4);
+
         for (int i=1;i<helpers.Count;i++) {
             helpers[i].SetActive(true);
             yield return new WaitForSeconds(timeInBetweenHelpers);
@@ -46,6 +48,10 @@ public class HelperManager : MonoBehaviour {
         GameManager.instance.NextPhase();
         
         yield break;
+    }
+
+    void PlayChord() {
+        GameManager.instance.PlayChord();
     }
     
 }

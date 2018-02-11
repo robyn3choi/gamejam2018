@@ -108,12 +108,13 @@ public class GameManager : MonoBehaviour
     {
         while (audio.volume > 0)
         {
-            audio.volume = (Mathf.Exp(-ringTime/3))-0.02f ;
+            audio.volume = (Mathf.Exp(-ringTime/1.3f))-0.02f ;
             ringTime += Time.deltaTime;
             yield return null;
         }
         yield break;
     }
+    
 
 
     void EndGame()

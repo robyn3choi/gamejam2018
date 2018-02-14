@@ -55,6 +55,11 @@ public class PixelManager : MonoBehaviour {
             }
         }
 
+        if (GameManager.instance.phase == 5)
+        {
+            isInterfade = true;
+        }
+
     }
 
     bool HaveAllPixelsFaded() {

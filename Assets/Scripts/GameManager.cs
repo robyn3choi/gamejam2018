@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         print("ON PHASE: " + phase);
         if (phase == 3) {
             canPlayerClick = true;
-            Invoke("MoveToPhase4", 8);
+            Invoke("MoveToPhase4", 6);
         }
         if (phase == 2) {
             audio1.Play();
